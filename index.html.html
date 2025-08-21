@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="https://static.readdy.ai/image/46e04b8c96e08f93680e66fd759611e1/a13705590bfedb4c87f77428cc369f5b.png">
+<title>GUTTAWOLF HIP HOP</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#ff0000',secondary:'#d4af37'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+.section-bg {
+background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(139,0,0,0.3)), url('https://static.readdy.ai/image/46e04b8c96e08f93680e66fd759611e1/d837287c7d13e2078300660a87d289ed.jpeg');
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
+position: relative;
+}
+@keyframes flicker {
+0% { opacity: 0.2; }
+25% { opacity: 0.4; }
+50% { opacity: 0.2; }
+75% { opacity: 0.5; }
+100% { opacity: 0.2; }
+}
+@keyframes float {
+0% { transform: translateY(0) rotate(0deg); }
+50% { transform: translateY(-20px) rotate(5deg); }
+100% { transform: translateY(0) rotate(0deg); }
+}
+@keyframes smoke {
+0% { transform: scale(1) translate(0, 0); opacity: 0.3; }
+50% { transform: scale(1.5) translate(20px, -20px); opacity: 0.6; }
+100% { transform: scale(1) translate(0, 0); opacity: 0.3; }
+}
+.flicker {
+animation: flicker 4s infinite;
+}
+.float {
+animation: float 6s ease-in-out infinite;
+}
+.smoke-cloud {
+position: absolute;
+background: radial-gradient(circle at center, rgba(255,0,0,0.2) 0%, transparent 70%);
+filter: blur(20px);
+animation: smoke 8s infinite;
+}
+.claw-mark {
+position: absolute;
+width: 150px;
+height: 20px;
+background: linear-gradient(to bottom right, transparent 45%, rgba(139,0,0,0.8) 50%, transparent 55%);
+box-shadow: 0 0 15px rgba(139,0,0,0.6);
+transform-origin: center;
+z-index: 1;
+}
+.claw-mark::before, .claw-mark::after {
+content: '';
+position: absolute;
+width: 100%;
+height: 100%;
+background: inherit;
+left: 0;
+transform-origin: center;
+}
+.claw-mark::before {
+top: -25px;
+transform: rotate(-5deg);
+}
+.claw-mark::after {
+top: 25px;
+transform: rotate(5deg);
+}
+.claw-mark::before, .claw-mark::after {
+content: '';
+position: absolute;
+width: 100%;
+height: 100%;
+background: inherit;
+left: 0;
+}
+.claw-mark::before {
+top: -20px;
+}
+.claw-mark::after {
+top: 20px;
+}
+.hexagon {
+clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+border: 2px solid rgba(139,0,0,0.2);
+background: rgba(139,0,0,0.1);
+backdrop-filter: blur(8px);
+position: absolute;
+z-index: 2;
+}
+.ink-splatter {
+position: absolute;
+background: radial-gradient(circle at center, rgba(139,0,0,0.6) 0%, transparent 70%);
+filter: blur(8px);
+mix-blend-mode: multiply;
+z-index: 1;
+}
+.splatter {
+position: absolute;
+background: radial-gradient(circle at center, rgba(255,0,0,0.8) 0%, transparent 70%);
+filter: blur(3px);
+mix-blend-mode: screen;
+}
+.comic-panel {
+position: relative;
+border: 4px solid #000;
+box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+overflow: hidden;
+}
+.comic-panel::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.2);
+z-index: 1;
+}
+.comic-panel-title {
+position: relative;
+z-index: 2;
+background: #000;
+color: #d4af37;
+padding: 5px 10px;
+font-family: 'Bebas Neue', sans-serif;
+transform: skew(-5deg);
+display: inline-block;
+margin-bottom: 10px;
+box-shadow: 3px 3px 0 rgba(255, 0, 0, 0.5);
+}
+.music-player {
+background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+border: 2px solid #d4af37;
+box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+.player-btn {
+background: #000;
+color: #d4af37;
+border: 1px solid #d4af37;
+transition: all 0.3s ease;
+}
+.player-btn:hover {
+background: #d4af37;
+color: #000;
+}
+input[type="range"] {
+-webkit-appearance: none;
+width: 100%;
+height: 5px;
+background: #000;
+border-radius: 5px;
+outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+-webkit-appearance: none;
+width: 15px;
+height: 15px;
+background: #d4af37;
+border-radius: 50%;
+cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+width: 15px;
+height: 15px;
+background: #d4af37;
+border-radius: 50%;
+cursor: pointer;
+border: none;
+}
+</style>
+</head>
+<body class="bg-black text-white min-h-screen">
+<!-- Section 1: Title Section -->
+<section id="title" class="relative h-screen flex items-center justify-center overflow-hidden section-bg">
+<div class="absolute inset-0 overflow-hidden">
+<!-- Smoke clouds -->
+<div class="smoke-cloud w-96 h-96 top-0 left-0" style="animation-delay: 0s;"></div>
+<div class="smoke-cloud w-[500px] h-[500px] top-1/4 right-1/4" style="animation-delay: 2s;"></div>
+<div class="smoke-cloud w-[400px] h-[400px] bottom-0 right-0" style="animation-delay: 4s;"></div>
+<div class="smoke-cloud w-[600px] h-[600px] bottom-1/4 left-1/4" style="animation-delay: 6s;"></div>
+<!-- Claw marks -->
+<div class="claw-mark -rotate-45 top-20 left-20 transform-gpu"></div>
+<div class="claw-mark rotate-45 bottom-40 right-60 transform-gpu"></div>
+<div class="claw-mark rotate-[30deg] top-1/3 right-1/4 transform-gpu"></div>
+<div class="claw-mark -rotate-[15deg] bottom-1/3 left-1/3 transform-gpu"></div>
+<div class="claw-mark rotate-[60deg] top-2/3 right-1/3 transform-gpu"></div>
+<!-- Flickering hexagons -->
+<div class="hexagon absolute top-10 left-10 w-32 h-32 flicker float" style="animation-delay: 0s;"></div>
+<div class="hexagon absolute bottom-20 right-20 w-48 h-48 flicker float" style="animation-delay: 1s;"></div>
+<div class="hexagon absolute top-1/3 right-1/4 w-24 h-24 flicker float" style="animation-delay: 2s;"></div>
+<div class="hexagon absolute bottom-1/3 left-1/4 w-36 h-36 flicker float" style="animation-delay: 3s;"></div>
+<div class="hexagon absolute top-2/3 center w-40 h-40 flicker float" style="animation-delay: 4s;"></div>
+<!-- Blood splatters -->
+<div class="splatter w-40 h-40 top-1/4 left-1/3"></div>
+<div class="splatter w-32 h-32 bottom-1/4 right-1/3"></div>
+<div class="splatter w-48 h-48 top-1/2 right-1/4"></div>
+<div class="splatter w-56 h-56 bottom-1/3 left-1/5"></div>
+<div class="splatter w-44 h-44 top-2/3 right-1/5"></div>
+</div>
+<!-- Logo overlay -->
+<div class="relative z-10 w-full max-w-3xl mx-auto">
+<div class="flex flex-col items-center gap-8">
+<div class="group flex flex-col items-center gap-2">
+<img src="https://static.readdy.ai/image/46e04b8c96e08f93680e66fd759611e1/1e8437f54f4f5c62361599dee5add7a0.png" alt="GUTTAWOLF" class="w-full aspect-video object-contain">
+<img src="https://static.readdy.ai/image/46e04b8c96e08f93680e66fd759611e1/21e62952ee90818596037aff5cb76c95.png" alt="GUTTAWOLF Hexagon" class="w-1/2 aspect-square object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100 -mt-16">
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Comic Book Panels -->
+<section id="panels" class="py-20 px-4 section-bg">
+<div class="max-w-7xl mx-auto">
+<h2 class="text-4xl font-['Permanent_Marker'] text-center mb-4 text-primary">THE WOLF DEN</h2>
+<div class="overflow-hidden mb-12">
+<a href="https://guttawolf.bandcamp.com/album/wolves-in-wolf-clothing" target="_blank" class="block whitespace-nowrap text-xl font-bold animate-[marquee_20s_linear_infinite] hover:pause">
+<span class="text-secondary">NEW ALBUM! </span>
+<span class="text-primary">WOLVES IN WOLF CLOTHING </span>
+<span class="text-secondary">NEW ALBUM! </span>
+<span class="text-primary">WOLVES IN WOLF CLOTHING </span>
+<span class="text-secondary">NEW ALBUM! </span>
+<span class="text-primary">WOLVES IN WOLF CLOTHING </span>
+<span class="text-secondary">NEW ALBUM! </span>
+<span class="text-primary">WOLVES IN WOLF CLOTHING </span>
+<span class="text-secondary">NEW ALBUM! </span>
+<span class="text-primary">WOLVES IN WOLF CLOTHING </span>
+</a>
+</div>
+<style>
+@keyframes marquee {
+0% { transform: translateX(100%); }
+100% { transform: translateX(-100%); }
+}
+</style>
+<a href="https://guttawolf.bandcamp.com/album/wolves-in-wolf-clothing" target="_blank" class="comic-panel bg-black flex flex-col hover:opacity-90 transition-opacity mb-12">
+<div class="comic-panel-title text-2xl">NEW ALBUM DROP!</div>
+<div class="flex flex-col gap-2 text-white text-lg text-center mb-4">
+<div>WOLVES IN WOLF CLOTHING</div>
+<div>by Guttamouf x theBigBudWolf</div>
+</div>
+<div class="flex-1 flex items-center justify-center p-4 relative">
+<img src="https://static.readdy.ai/image/46e04b8c96e08f93680e66fd759611e1/a0e666963e370d5dba0825272ea698f0.jfif" alt="Wolves in Wolf Clothing Album Cover" class="w-4/5 h-4/5 object-contain hover:scale-105 transition-transform duration-300">
+<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-80 p-2">
+<h3 class="text-xl font-bold text-primary">WOLVES IN WOLF CLOTHING</h3>
+<p class="text-secondary">Available Now!</p>
+</div>
+</div>
+</a>
+<a href="https://youtu.be/nG7k_6Xul38" target="_blank" class="comic-panel bg-black flex flex-col hover:opacity-90 transition-opacity mb-12">
+<div class="comic-panel-title text-2xl text-secondary">NEW VIDEO</div>
+<div class="flex flex-col gap-2 text-white text-lg text-center mb-4">
+<div>GUTTAFLOW PT.2</div>
+<div class="text-primary">OFFICIAL VIDEO</div>
+</div>
+<div class="flex-1 flex items-center justify-center p-4 relative">
+<div class="w-full h-[500px] flex items-center justify-center">
+<iframe class="w-full h-full" src="https://www.youtube.com/embed/nG7k_6Xul38" title="GUTTAFLOW PT.2 (PAIR OF HAMMERS REMIX)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-80 p-2">
+<h3 class="text-xl font-bold text-primary">GUTTAFLOW PT.2 (OFFICIAL VIDEO)</h3>
+<p class="text-secondary">WATCH NOW</p>
+</div>
+</div>
+</a>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+<a href="https://youtu.be/kEtQf32CTbo" target="_blank" class="comic-panel bg-black flex flex-col hover:opacity-90 transition-opacity">
+<div class="comic-panel-title text-2xl text-secondary">NOW VIEWING</div>
+<div class="flex flex-col gap-2 text-white text-lg text-center mb-4">
+<div>GUTTAFLOW PT.2</div>
+<div>(PAIR OF HAMMERS REMIX)</div>
+</div>
+<div class="flex-1 flex items-center justify-center p-4 relative">
+<div class="w-full h-[500px] flex items-center justify-center">
+<iframe class="w-full h-full" src="https://www.youtube.com/embed/kEtQf32CTbo" title="GUTTAFLOW PT.2 (PAIR OF HAMMERS REMIX)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-80 p-2">
+<h3 class="text-xl font-bold text-primary">GUTTAFLOW PT.2 PAIR OF HAMMERS REMIX</h3>
+<p class="text-secondary">WATCH VIDEO</p>
+</div>
+</div>
+</a>
+<a href="https://guttawolf.bandcamp.com/album/guttaflow-2" class="comic-panel bg-black flex flex-col hover:opacity-90 transition-opacity">
+<div class="comic-panel-title text-2xl text-secondary">NEW RELEASE!</div>
+<div class="flex flex-col gap-2 text-white text-lg text-center mb-4">
+<div>GUTTAFLOW PART 2</div>
+<div>by Guttamouf x theBigBudWolf</div>
+<div>3rd Single off of Wolves In Wolf Clothing</div>
+</div>
+<div class="flex-1 flex items-center justify-center p-4 relative">
+<img src="https://static.readdy.ai/image/46e04b8c96e08f93680e66fd759611e1/7260e2cddd686c2185be1631382ac895.jfif" alt="Guttaflow Part 2 Album Cover" class="w-4/5 h-4/5 object-contain hover:scale-105 transition-transform duration-300">
+<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-80 p-2">
+<h3 class="text-xl font-bold text-primary">GUTTAFLOW PT.2</h3>
+<p class="text-secondary">Now available!</p>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+<!-- Pre-sale Panel -->
+<a href="https://www.youtube.com/watch?v=jwD-LqNZD8A" target="_blank" data-readdy="true" class="comic-panel bg-black flex flex-col hover:opacity-90 transition-opacity">
+<div class="comic-panel-title text-2xl">NOW VIEWING!</div>
+<div class="flex flex-col gap-2 text-white text-lg text-center mb-4">
+<div>2ND VIDEO: SKELTER HELTER</div>
+<div>Off of the NEW album:</div>
+<div>WOLVES IN WOLF CLOTHING</div>
+<div>by Guttamouf x theBigBudWolf</div>
+</div>
+<div class="flex-1 flex items-center justify-center p-4 relative">
+<div class="w-full h-[500px] md:h-[500px] flex items-center justify-center">
+<iframe class="w-full h-full" src="https://www.youtube.com/embed/jwD-LqNZD8A" title="SKELTER HELTER by GUTTAWOLF" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-80 p-2">
+<h3 class="text-xl font-bold text-primary">SKELTER HELTER</h3>
+<p class="text-secondary">Watch Music Video</p>
+</div>
+</div>
+</a>
+<!-- New Release Panel -->
+<a href="https://guttawolf.bandcamp.com/album/skelter-helter" target="_blank" class="comic-panel bg-black flex flex-col hover:opacity-90 transition-opacity">
+<div class="comic-panel-title text-2xl">STREAMING NOW!</div>
+<div class="flex flex-col gap-2 text-white text-lg text-center mb-4">
+<div>Just dropped!</div>
+<div>SKELTER HELTER</div>
+<div>by Guttamouf x theBigBudWolf</div>
+</div>
+<div class="flex-1 flex items-center justify-center p-4 relative">
+<div class="w-full h-[500px] md:h-[500px] flex items-center justify-center">
+<img src="https://static.readdy.ai/image/46e04b8c96e08f93680e66fd759611e1/c5a26f5f4d3186dcc16536447c6b1f2f.jpeg" alt="Skelter Helter Album Cover" class="w-4/5 h-4/5 object-contain hover:scale-105 transition-transform duration-300">
+</div>
+<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-80 p-2">
+<h3 class="text-xl font-bold text-primary">SKELTER HELTER</h3>
+<p class="text-secondary">Available Now!</p>
+</div>
+</div>
+</a>
+</div>
+<!-- Media Panels Container -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+<!-- Now Streaming Panel -->
+<a href="https://snd.click/n3uv" data-readdy="true" class="comic-panel bg-black flex flex-col hover:opacity-90 transition-opacity">
+<div class="comic-panel-title text-2xl">NOW STREAMING</div>
+<div class="flex flex-col gap-2 text-white text-lg text-center mb-4">
+<div>The 1st single off of the NEW album:</div>
+<div>WOLVES IN WOLF CLOTHING</div>
+<div>by Guttamouf x theBigBudWolf</div>
+</div>
+<div class="flex-1 flex items-center justify-center p-4 relative">
+<div class="w-full h-[500px] md:h-[500px] flex items-center justify-center">
+<img src="https://static.readdy.ai/image/46e04b8c96e08f93680e66fd759611e1/2c49d856234eb3bae32a31ca09a698c7.jpeg" alt="Wolves in Wolf Clothing Album Cover" class="w-4/5 h-4/5 object-contain hover:scale-105 transition-transform duration-300">
+</div>
+<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-80 p-2">
+<h3 class="text-xl font-bold text-primary">QUAGMIRE</h3>
+<p class="text-secondary">Now available for Stream or Purchase</p>
+</div>
+</div>
+</a>
+<!-- Now Playing Panel -->
+<a href="https://www.youtube.com/watch?v=MCZTKPvTtG8" target="_blank" data-readdy="true" class="comic-panel bg-black flex flex-col hover:opacity-90 transition-opacity">
+<div class="comic-panel-title text-2xl">NOW PLAYING</div>
+<div class="flex flex-col gap-2 text-white text-lg text-center mb-4">
+<div>NEW VIDEO: QUAGMIRE</div>
+<div>The 1st single off of the NEW album:</div>
+<div>WOLVES IN WOLF CLOTHING</div>
+<div>by Guttamouf x theBigBudWolf</div>
+</div>
+<div class="flex-1 flex items-center justify-center p-4 relative">
+<div class="w-full h-[500px] md:h-[500px] flex items-center justify-center">
+<iframe class="w-full h-full" src="https://www.youtube.com/embed/MCZTKPvTtG8" title="QUAGMIRE by GUTTAWOLF" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-80 p-2">
+<h3 class="text-xl font-bold text-primary">QUAGMIRE</h3>
+<p class="text-secondary">Watch Music Video</p>
+</div>
+</div>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Panel 1: FEATURING -->
+<a href="https://guttawolf.bandcamp.com/album/wolves-in-wolf-clothing" target="_blank" data-readdy="true" class="comic-panel bg-black h-[500px] flex flex-col hover:opacity-90 transition-opacity">
+<div class="comic-panel-title text-2xl">FEATURING</div>
+<div class="flex-1 flex items-center justify-center p-4 relative">
+<div class="w-full h-full flex items-center justify-center">
+<img src="https://static.readdy.ai/image/46e04b8c96e08f93680e66fd759611e1/a0e666963e370d5dba0825272ea698f0.jfif" alt="Wolves in Wolf Clothing Album Cover" class="w-4/5 h-4/5 object-contain hover:scale-105 transition-transform duration-300">
+</div>
+<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-80 p-2">
+<h3 class="text-xl font-bold text-primary">WOLVES IN WOLF CLOTHING</h3>
+<p class="text-secondary">Available Now!</p>
+</div>
+</div>
+</a>
+<!-- Panel 2: MERCH -->
+<a href="https://guttawolf.creator-spring.com" target="_blank" data-readdy="true" class="comic-panel bg-black h-[500px] flex flex-col relative hover:opacity-90 transition-opacity">
+<div class="comic-panel-title text-2xl">MERCH</div>
+<div class="flex-1 flex items-center justify-center p-4 relative">
+<div class="w-full h-full flex items-center justify-center">
+<img src="https://static.readdy.ai/image/46e04b8c96e08f93680e66fd759611e1/28341f453c1ada81101f4b48798aa770.png" alt="GUTTAWOLF Merchandise" class="w-4/5 h-4/5 object-contain hover:scale-105 transition-transform duration-300">
+</div>
+<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-80 p-2">
+<h3 class="text-xl font-bold text-primary">GUTTAWOLF GEAR</h3>
+<span class="block mt-2 text-secondary">
+<span class="flex items-center">
+<span>SHOP NOW</span>
+<i class="ri-arrow-right-line ml-2"></i>
+</span>
+</span>
+</div>
+</div>
+</a>
+<!-- Panel 3: NFTs -->
+<a href="https://tesseractx.com/@guttawolf" target="_blank" data-readdy="true" class="comic-panel bg-black h-[500px] flex flex-col relative hover:opacity-90 transition-opacity">
+<div class="comic-panel-title text-2xl">GUTTAWOLF NFT's</div>
+<div class="flex-1 flex items-center justify-center p-4 relative">
+<div class="w-full h-full flex items-center justify-center">
+<img src="https://static.readdy.ai/image/46e04b8c96e08f93680e66fd759611e1/1e95bd02161506c214a61ff956a8f45b.png" alt="GUTTAWOLF NFTs" class="w-4/5 h-4/5 object-contain hover:scale-105 transition-transform duration-300">
+</div>
+<div class="absolute bottom-4 left-4 right-4 bg-black bg-opacity-80 p-2">
+<h3 class="text-xl font-bold text-primary">DIGITAL COLLECTIBLES</h3>
+<span class="block mt-2 text-secondary">
+<span class="flex items-center">
+<span>EXPLORE</span>
+<i class="ri-arrow-right-line ml-2"></i>
+</span>
+</span>
+</div>
+</div>
+</a>
+</div>
+</div>
+</section>
+<!-- Section 3: Biography -->
+<section id="biography" class="py-20 px-4 section-bg relative">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col gap-8">
+<div class="flex flex-col md:flex-row items-start justify-between gap-8">
+<!-- Left Side: Guttamouf Logo -->
+<div class="order-2 md:order-1 md:w-1/4 flex flex-col items-center">
+<a href="https://linktr.ee/Guttamouf65" target="_blank" class="block w-48 h-48 bg-black border-4 border-primary rounded-full p-2 hover:scale-105 transition-transform">
+<div class="w-full h-full rounded-full flex items-center justify-center overflow-hidden">
+<img src="https://static.readdy.ai/image/46e04b8c96e08f93680e66fd759611e1/93e48719cd62eb99a06eacf85e98a07f.png" alt="Guttamouf Logo" class="w-full h-full object-cover">
+</div>
+</a>
+<h3 class="mt-4 text-2xl font-['Permanent_Marker'] text-primary">GUTTAMOUF</h3>
+<p class="text-secondary text-center mt-2">EMCEE</p>
+</div>
+<!-- Bio Section -->
+<div class="order-1 md:order-2 md:w-2/4 mb-8 md:mb-0">
+<h2 class="text-4xl font-['Permanent_Marker'] text-center mb-8 text-primary">BIO</h2>
+<div class="bg-gray-900 p-6 border-2 border-secondary">
+<p class="mb-4 text-white">
+GUTTAWOLF is the collaborative force of Guttamouf, an NYC emcee known for raw lyricism and punchline-heavy flows, and theBigBudWolf, a Canadian producer crafting dark, hard-hitting boom bap beats. Together, they form a gritty, primal sound that blends street-rooted hip-hop with eerie, cinematic undertones — bridging classic cipher energy with the decentralized future.
+</p>
+<p class="mb-4 text-white">
+Also known as The Scream Team, Raze & Lucien, Tussle Simmons and Tricky Rubin (depending on the moon phase), this duo doesn't just drop tracks — they summon terror and fright.
+</p>
+<p class="text-white">
+It's not just a duo — GUTTAWOLF is a sound, a symbol, and a movement: Boom bap from the shadows. Blockchain from the underground. The pack runs deep.
+</p>
+</div>
+</div>
+<!-- Right Side: theBigBudWolf Logo -->
+<div class="order-3 md:w-1/4 flex flex-col items-center">
+<a href="https://linktr.ee/BigBudWolf" target="_blank" class="block w-48 h-48 bg-black border-4 border-primary rounded-full p-2 hover:scale-105 transition-transform">
+<div class="w-full h-full rounded-full flex items-center justify-center overflow-hidden">
+<img src="https://static.readdy.ai/image/46e04b8c96e08f93680e66fd759611e1/56b81008d185e2e1a8dda3615feb892b.png" alt="theBigBudWolf Logo" class="w-full h-full object-cover">
+</div>
+</a>
+<h3 class="mt-4 text-2xl font-['Permanent_Marker'] text-primary">theBigBudWolf</h3>
+<p class="text-secondary text-center mt-2">PRODUCER</p>
+</div>
+</div>
+<!-- Hexagon Shaped Button -->
+<div class="order-4 w-full flex justify-center mt-8">
+<a href="#title" class="hexagon bg-primary w-60 h-60 flex items-center justify-center hover:bg-secondary transition-colors cursor-pointer">
+<img src="https://static.readdy.ai/image/46e04b8c96e08f93680e66fd759611e1/a88472eaef43fe68e09f05c1e882d4f6.png" alt="GUTTAWOLF Logo" class="w-4/5 h-4/5 object-contain">
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Music Section (Placeholder) -->
+<section id="music" class="py-20 px-4 section-bg">
+<div class="max-w-7xl mx-auto">
+</div>
+</section>
+<!-- Footer -->
+<footer class="py-8 px-4 bg-black border-t border-primary">
+<div class="max-w-7xl mx-auto text-center">
+<p class="text-gray-400">© 2025 GUTTAWOLF. All rights reserved.</p>
+<div class="mt-8">
+<button type="button" id="contactBtn" class="text-primary hover:text-secondary transition-colors font-bold text-lg mb-8 w-auto inline-block cursor-pointer">FOR BOOKING & OTHER INQUIRIES</button>
+<div class="overflow-hidden">
+<a href="https://guttawolf.bandcamp.com/album/wolves-in-wolf-clothing" target="_blank" class="block whitespace-nowrap text-xl font-bold animate-[marquee_20s_linear_infinite] hover:pause">
+<span class="text-secondary">NEW ALBUM! </span>
+<span class="text-primary">WOLVES IN WOLF CLOTHING </span>
+<span class="text-secondary">NEW ALBUM! </span>
+<span class="text-primary">WOLVES IN WOLF CLOTHING </span>
+<span class="text-secondary">NEW ALBUM! </span>
+<span class="text-primary">WOLVES IN WOLF CLOTHING </span>
+<span class="text-secondary">NEW ALBUM! </span>
+<span class="text-primary">WOLVES IN WOLF CLOTHING </span>
+<span class="text-secondary">NEW ALBUM! </span>
+<span class="text-primary">WOLVES IN WOLF CLOTHING </span>
+</a>
+</div>
+<div id="contactForm" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4 overflow-y-auto">
+<div class="bg-black border-2 border-primary p-4 sm:p-8 rounded-lg w-[90%] max-w-[320px] sm:max-w-md m-auto">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-2xl text-primary font-['Permanent_Marker']">Contact Us</h3>
+<button id="closeForm" class="text-gray-400 hover:text-white">
+<i class="ri-close-line text-2xl"></i>
+</button>
+</div>
+<form target="_blank" action="https://formsubmit.co/f5ffc6c9e3abc8bca76cbafd9ba04e9e" method="POST" class="space-y-4">
+<div class="space-y-3">
+<input type="text" name="name" class="w-full bg-gray-900 border border-gray-700 text-white px-3 py-2 rounded-button text-sm" placeholder="Full Name" required>
+<input type="email" name="email" class="w-full bg-gray-900 border border-gray-700 text-white px-3 py-2 rounded-button text-sm" placeholder="Email Address" required>
+<textarea name="message" class="w-full bg-gray-900 border border-gray-700 text-white px-3 py-2 rounded-button h-20 sm:h-32 text-sm" placeholder="Your Message" required></textarea>
+</div>
+<button type="submit" class="w-full bg-primary hover:bg-secondary text-white py-2 rounded-button transition-colors">SEND MESSAGE</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script id="contactFormScript">
+document.addEventListener('DOMContentLoaded', function() {
+const contactBtn = document.getElementById('contactBtn');
+const contactForm = document.getElementById('contactForm');
+const closeForm = document.getElementById('closeForm');
+if (contactBtn && contactForm && closeForm) {
+const toggleForm = (show) => {
+if (show) {
+contactForm.classList.remove('hidden');
+document.body.style.overflow = 'hidden';
+} else {
+contactForm.classList.add('hidden');
+document.body.style.overflow = 'auto';
+}
+};
+contactBtn.addEventListener('click', () => toggleForm(true));
+closeForm.addEventListener('click', () => toggleForm(false));
+contactForm.addEventListener('click', (e) => {
+if (e.target === contactForm) {
+toggleForm(false);
+}
+});
+document.addEventListener('keydown', (e) => {
+if (e.key === 'Escape' && !contactForm.classList.contains('hidden')) {
+toggleForm(false);
+}
+});
+}
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const sections = document.querySelectorAll('section');
+sections.forEach(section => {
+// Add claw marks
+for(let i = 0; i < 3; i++) {
+const claw = document.createElement('div');
+claw.className = 'claw-mark';
+claw.style.left = `${Math.random() * 100}%`;
+claw.style.top = `${Math.random() * 100}%`;
+claw.style.transform = `rotate(${Math.random() * 360}deg)`;
+section.appendChild(claw);
+}
+// Add ink splatters
+for(let i = 0; i < 4; i++) {
+const splatter = document.createElement('div');
+splatter.className = 'ink-splatter';
+splatter.style.width = `${100 + Math.random() * 200}px`;
+splatter.style.height = splatter.style.width;
+splatter.style.left = `${Math.random() * 100}%`;
+splatter.style.top = `${Math.random() * 100}%`;
+section.appendChild(splatter);
+}
+// Add hexagons
+for(let i = 0; i < 5; i++) {
+const hex = document.createElement('div');
+hex.className = 'hexagon flicker';
+hex.style.width = `${50 + Math.random() * 100}px`;
+hex.style.height = hex.style.width;
+hex.style.left = `${Math.random() * 100}%`;
+hex.style.top = `${Math.random() * 100}%`;
+hex.style.animationDelay = `${Math.random() * 5}s`;
+section.appendChild(hex);
+}
+});
+// Audio player functionality would be implemented here
+console.log('Audio player ready for implementation');
+});
+</script>
+</body>
+</html>
